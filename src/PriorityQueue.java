@@ -15,7 +15,7 @@ public class PriorityQueue {
 		if (isEmpty()) return null;
 		int min = 0;
 		for(int i = 0; i < locations.size(); i++) {
-			if(locations.get(i).getFCost() < locations.get(i).getFCost())
+			if(locations.get(min).getFCost() > locations.get(i).getFCost())
 				min = i;
 		}
 		

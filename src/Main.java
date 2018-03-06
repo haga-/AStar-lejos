@@ -21,6 +21,8 @@ class AStar {
     
     while (!frontier.isEmpty()) {
       Node current = frontier.poll();
+      System.out.println(current);
+      Button.waitForAnyPress();
       robot.moveTo(current, came_from);
       if (current.equals(goal)) break;
       for(Node next : map.neighbors(robot.my_pos, robot.looking_at, robot.neighbors())) {
@@ -29,6 +31,7 @@ class AStar {
           cost_so_far.put(next, new_cost);
           map.calculateHCost(next, goal);
           frontier.add(next);
+          //System.out.println("F next: " + next.getFCost());
           came_from.put(next, current);
         }
       }

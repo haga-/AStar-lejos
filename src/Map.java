@@ -63,6 +63,7 @@ public class Map {
     	if(l.y+1 < width && robot_neighbors.get(1))
     		neighbors.add(map[l.x][l.y+1]);
     }
+    //for(Node n : neighbors) System.out.println(n);
     return neighbors;
   }
 

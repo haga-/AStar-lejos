@@ -32,10 +32,11 @@ public class Robot {
     	neighbors.add(lookRight());
     	neighbors.add(lookLeft());
     	neighbors.add(lookFront());
+    	for(Boolean b : neighbors) System.out.println(b);
     	return neighbors;
     }
     
-  //Return true if step is free
+    //Return true if step is free
     public Boolean lookFront() {
     	motorA.rotateTo(0, true);
 
@@ -45,7 +46,7 @@ public class Robot {
     	distance = us.getDistance();
     	System.out.println("Front:" + distance);
     	
-    	return distance > 20 && distance < 200;
+    	return distance > 20;
     }
     
     //Return true if step is free
@@ -58,7 +59,7 @@ public class Robot {
     	distance = us.getDistance();
     	System.out.println("Left:" + distance);
 
-    	return distance > 20 && distance < 200;
+    	return distance > 20;
     }
     
     //Return true if step is free
@@ -71,11 +72,12 @@ public class Robot {
     	distance = us.getDistance();
     	System.out.println("Right:" + distance);
 
-    	return distance > 20 && distance < 200;
+    	return distance > 20;
     }
     
     public void moveTo(Node goal, MyMap came_from) {
     	Node current = goal;
+    	System.out.println(looking_at);
     	while (!my_pos.equals(goal)) {
     		if(Math.abs(current.x - my_pos.x) == 1 || Math.abs(current.y - my_pos.y) == 1) {
     			moveOneSpot(current);
@@ -87,6 +89,7 @@ public class Robot {
     }
     
     public void moveOneSpot(Node goal) {
+    	System.out.println("Moving to: " + goal);
     	// Move horizontally
     	if(goal.x == my_pos.x) {
     		if(goal.y > my_pos.y) { // Move right
